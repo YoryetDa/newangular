@@ -1,0 +1,197 @@
+
+
+<!-- Main Content -->
+<div class="container mt-5 pt-5">
+    <div class="text-center bg-light p-4 rounded shadow-sm mb-4">
+        <h3 class="text-muted">Bienvenido a Fichero Médico {{ usuarioActual?.nombre }} {{ usuarioActual?.apellido }}!</h3>
+        <p class="lead text-muted">Rol: {{ usuarioActual?.rol }}</p>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-user-md icon"></i> Módulo de Doctores
+                    </div>
+                    <div class="card-body">
+                        Aquí puedes ingresar la información de un nuevo doctor dentro del Fichero.
+                        <button id="btn-ingresar-doctor" type="button" class="btn btn-primary" data-toggle="modal" data-target="#doctorModal">Ingresar Doctor</button>
+                        <p>Total Doctores: <a [routerLink]="['/doctor']"><span id="contador-doctores">{{ contadorDoctores }}</span></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-hospital icon"></i> Módulo de Instituciones
+                    </div>
+                    <div class="card-body">
+                        Aquí puedes ingresar la información de una nueva institución médica.
+                        <button id="btn-ingresar-institucion" type="button" class="btn btn-primary">Ingresar Institución</button>
+                        <p>Total Instituciones: <span id="contador-instituciones">{{ contadorInstituciones }}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Sección de administración solo para admin -->
+<div id="admin-section" class="container mt-4" *ngIf="usuarioActual?.rol === 'admin'">
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white">
+                    <h4>Usuarios Registrados</h4>
+                    <button id="btn-registrar-usuario" routerLink="/register" class="btn btn-primary">Registrar Usuario</button>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Correo</th>
+                                    <th>Rol</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let usuario of usuarios">
+                                    <td>{{ usuario.nombre }}</td>
+                                    <td>{{ usuario.apellido }}</td>
+                                    <td>{{ usuario.correo }}</td>
+                                    <td>{{ usuario.rol }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning" (click)="editarUsuario(usuario)">Editar</button>
+                                        <button class="btn btn-sm btn-danger" (click)="eliminarUsuario(usuario)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal de Usuarios -->
+<div class="modal fade" id="usuarioModal" tabindex="-1" aria-labelledby="usuarioModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="usuarioModalLabel">Editar Usuario</h5>
+                <button type="button" class="close" (click)="cerrarModal('usuarioModal')" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form (submit)="guardarUsuario($event)">
+                    <div class="form-group">
+                        <label for="usuario-nombre">Nombre</label>
+                        <input type="text" id="usuario-nombre" [(ngModel)]="usuarioActualEdicion.nombre" name="usuario-nombre" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario-apellido">Apellido</label>
+                        <input type="text" id="usuario-apellido" [(ngModel)]="usuarioActualEdicion.apellido" name="usuario-apellido" class="form-control" placeholder="Apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario-correo">Correo Electrónico</label>
+                        <input type="email" id="usuario-correo" [(ngModel)]="usuarioActualEdicion.correo" name="usuario-correo" class="form-control" placeholder="Correo Electrónico">
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario-rol">Rol</label>
+                        <select id="usuario-rol" [(ngModel)]="usuarioActualEdicion.rol" name="usuario-rol" class="form-control">
+                            <option value="user">Usuario</option>
+                            <option value="admin">Administrador</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal de Doctores -->
+<div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="doctorModalLabel">Ficha del Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs" id="doctorTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="ficha-tab" data-toggle="tab" href="#ficha" role="tab" aria-controls="ficha" aria-selected="true">Ficha Doctor</a>
+                    </li>
+                  
+                </ul>
+                <div class="tab-content" id="doctorTabsContent">
+                    <!-- Ficha Doctor -->
+                    <div class="tab-pane fade show active" id="ficha" role="tabpanel" aria-labelledby="ficha-tab">
+                        <form id="doctor-form" (submit)="guardarDoctor($event)">
+                            <div class="form-group">
+                                <label for="doctor-nombre">Nombre</label>
+                                <input type="text" id="doctor-nombre" class="form-control" placeholder="Nombre">
+                                <div class="invalid-feedback">El nombre es obligatorio y debe tener al menos 3 caracteres</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctor-apellido">Apellido</label>
+                                <input type="text" id="doctor-apellido" class="form-control" placeholder="Apellido">
+                                <div class="invalid-feedback">El apellido es obligatorio y debe tener al menos 3 caracteres</div>
+                            </div>
+                            <div id="emails-container" class="form-group">
+                                <label for="doctor-email">Correo Electrónico</label>
+                                <div class="input-group mb-2">
+                                    <input type="email" class="form-control" name="doctor-email" placeholder="Correo Electrónico">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary btn-add-email" type="button">+</button>
+                                    </div>
+                                    <div class="invalid-feedback">Por favor, ingresa un correo válido</div>
+                                </div>
+                            </div>
+                            <div id="telefonos-container" class="form-group">
+                                <label for="doctor-telefono">Teléfono</label>
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" name="doctor-telefono" placeholder="Teléfono">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary btn-add-telefono" type="button">+</button>
+                                    </div>
+                                    <div class="invalid-feedback">El teléfono debe ser válido</div>
+                                </div>
+                            </div>
+                            <div id="instituciones-container" class="form-group">
+                                <label for="doctor-institucion">Institución</label>
+                                <div class="input-group mb-2">
+                                    <select class="form-control" name="doctor-institucion"></select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary btn-add-institucion" type="button">+</button>
+                                    </div>
+                                    <div class="invalid-feedback">Por favor, selecciona una institución</div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="doctor-especialidad">Especialidad</label>
+                                <input type="text" id="doctor-especialidad" class="form-control" placeholder="Especialidad">
+                                <div class="invalid-feedback">La especialidad es obligatoria</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="doctor-imagen">Imagen del Doctor</label>
+                                <input type="file" id="doctor-imagen" class="form-control-file" (change)="previsualizarImagen($event)">
+                                <img id="doctor-imagen-previa" src="img/predeterminada.jpg" class="img-thumbnail mt-2" alt="Imagen del Doctor" style="width: 150px; height: 150px;">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Guardar Doctor</button>
+                        </form>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

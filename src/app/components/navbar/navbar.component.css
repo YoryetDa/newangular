@@ -1,0 +1,27 @@
+/* Estilos para el componente de navegación */
+.navbar {
+    background-color: #1f4e81; /* Color de fondo azul */
+  }
+  
+  .navbar-brand,
+  .nav-link,
+  .nav-item .dropdown-menu .dropdown-item {
+    color: white !important; /* Color del texto */
+    text-align: center;
+  }
+  
+  .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1); /* Color del borde del toggler */
+  }
+  
+  .navbar-nav {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .nav-item {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  

@@ -1,0 +1,58 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+  }
+  
+  .navbar {
+    background-color: #23476e;
+  }
+  
+  .navbar .navbar-brand, .navbar .nav-link {
+    color: #fff;
+  }
+  
+  .card {
+    margin-top: 20px;
+    
+  }
+  
+  .card-header {
+    font-size: 1.2rem;
+    background-color: #23476e;
+  }
+  
+  .card-body {
+    font-size: 1rem;
+  }
+  
+  #admin-section .card-header {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  #doctorModal .modal-header {
+    background-color: #2873c3;
+    color: #fff;
+  }
+  
+  #doctorModal .modal-body .form-group label {
+    font-weight: bold;
+  }
+  
+  #doctorModal .modal-body .form-group .form-control {
+    margin-bottom: 10px;
+  }
+  
+  #doctorModal .modal-body .form-group .input-group-append .btn {
+    background-color: #105094;
+    color: #fff;
+  }
+  
+  #doctorModal .modal-body .tab-content .tab-pane textarea {
+    resize: none;
+  }
+  .modal-header .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
