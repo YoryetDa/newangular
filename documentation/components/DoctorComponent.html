@@ -1,0 +1,1947 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>mimedisan documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">mimedisan documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  DoctorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/doctor/doctor.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente que gestiona la información de los doctores.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-doctor</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>CommonModule</code>
+                            <code>FormsModule</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./doctor.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./doctor.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#doctorActual" >doctorActual</a>
+                            </li>
+                            <li>
+                                <a href="#doctores" >doctores</a>
+                            </li>
+                            <li>
+                                <a href="#instituciones" >instituciones</a>
+                            </li>
+                            <li>
+                                <a href="#usuarioActual" >usuarioActual</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#abrirModal" >abrirModal</a>
+                            </li>
+                            <li>
+                                <a href="#agregarCampoEmail" >agregarCampoEmail</a>
+                            </li>
+                            <li>
+                                <a href="#agregarCampoInstitucion" >agregarCampoInstitucion</a>
+                            </li>
+                            <li>
+                                <a href="#agregarCampoTelefono" >agregarCampoTelefono</a>
+                            </li>
+                            <li>
+                                <a href="#cargarDoctores" >cargarDoctores</a>
+                            </li>
+                            <li>
+                                <a href="#cerrarModal" >cerrarModal</a>
+                            </li>
+                            <li>
+                                <a href="#closeModal" >closeModal</a>
+                            </li>
+                            <li>
+                                <a href="#editarDoctor" >editarDoctor</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarCampoEmail" >eliminarCampoEmail</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarCampoInstitucion" >eliminarCampoInstitucion</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarCampoTelefono" >eliminarCampoTelefono</a>
+                            </li>
+                            <li>
+                                <a href="#eliminarDoctor" >eliminarDoctor</a>
+                            </li>
+                            <li>
+                                <a href="#guardarDoctor" >guardarDoctor</a>
+                            </li>
+                            <li>
+                                <a href="#inicializarDoctor" >inicializarDoctor</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#previsualizarImagen" >previsualizarImagen</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(platformId: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, renderer: Renderer2)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/doctor/doctor.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Constructor del DoctorComponent</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>platformId</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Identificador de la plataforma (navegador o servidor)</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>renderer</td>
+                                                  
+                                                        <td>
+                                                                    <code>Renderer2</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Servicio para manipular el DOM</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="abrirModal"></a>
+                    <span class="name">
+                        <span ><b>abrirModal</b></span>
+                        <a href="#abrirModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>abrirModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="113"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:113</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre el modal para editar o agregar un doctor.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarCampoEmail"></a>
+                    <span class="name">
+                        <span ><b>agregarCampoEmail</b></span>
+                        <a href="#agregarCampoEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarCampoEmail()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="146"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:146</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Agrega un nuevo campo de email al doctor actual.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarCampoInstitucion"></a>
+                    <span class="name">
+                        <span ><b>agregarCampoInstitucion</b></span>
+                        <a href="#agregarCampoInstitucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarCampoInstitucion()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="176"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:176</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Agrega un nuevo campo de institución al doctor actual.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="agregarCampoTelefono"></a>
+                    <span class="name">
+                        <span ><b>agregarCampoTelefono</b></span>
+                        <a href="#agregarCampoTelefono"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>agregarCampoTelefono()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:161</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Agrega un nuevo campo de teléfono al doctor actual.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cargarDoctores"></a>
+                    <span class="name">
+                        <span ><b>cargarDoctores</b></span>
+                        <a href="#cargarDoctores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cargarDoctores()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carga la lista de doctores desde el almacenamiento local.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cerrarModal"></a>
+                    <span class="name">
+                        <span ><b>cerrarModal</b></span>
+                        <a href="#cerrarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cerrarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="129"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:129</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra el modal de edición o agregado de doctor.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeModal"></a>
+                    <span class="name">
+                        <span ><b>closeModal</b></span>
+                        <a href="#closeModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cierra el modal de edición o agregado de doctor (método alternativo).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editarDoctor"></a>
+                    <span class="name">
+                        <span ><b>editarDoctor</b></span>
+                        <a href="#editarDoctor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editarDoctor(doctor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="94"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:94</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Edita la información de un doctor existente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>doctor</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El doctor a editar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarCampoEmail"></a>
+                    <span class="name">
+                        <span ><b>eliminarCampoEmail</b></span>
+                        <a href="#eliminarCampoEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarCampoEmail(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="154"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:154</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un campo de email del doctor actual.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El índice del campo de email a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarCampoInstitucion"></a>
+                    <span class="name">
+                        <span ><b>eliminarCampoInstitucion</b></span>
+                        <a href="#eliminarCampoInstitucion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarCampoInstitucion(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un campo de institución del doctor actual.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El índice del campo de institución a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarCampoTelefono"></a>
+                    <span class="name">
+                        <span ><b>eliminarCampoTelefono</b></span>
+                        <a href="#eliminarCampoTelefono"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarCampoTelefono(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="169"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:169</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un campo de teléfono del doctor actual.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El índice del campo de teléfono a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="eliminarDoctor"></a>
+                    <span class="name">
+                        <span ><b>eliminarDoctor</b></span>
+                        <a href="#eliminarDoctor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>eliminarDoctor(doctor: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:103</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Elimina un doctor de la lista y del almacenamiento local.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>doctor</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El doctor a eliminar</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="guardarDoctor"></a>
+                    <span class="name">
+                        <span ><b>guardarDoctor</b></span>
+                        <a href="#guardarDoctor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>guardarDoctor(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:71</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Guarda el doctor actual en la lista de doctores y en el almacenamiento local.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El evento de envío del formulario</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="inicializarDoctor"></a>
+                    <span class="name">
+                        <span ><b>inicializarDoctor</b></span>
+                        <a href="#inicializarDoctor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>inicializarDoctor()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="46"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa un nuevo doctor con campos vacíos.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>    <code>{ nombre: string; apellido: string; emails: {}; telefonos: {}; especialidad: string; instituciones: {}; notas: string; visitas: string; imagen: string; }</code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>Un objeto doctor inicializado</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="32"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Inicializa el componente cargando la información del usuario actual y los doctores.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="previsualizarImagen"></a>
+                    <span class="name">
+                        <span ><b>previsualizarImagen</b></span>
+                        <a href="#previsualizarImagen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>previsualizarImagen(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="192"
+                                    class="link-to-prism">src/app/components/doctor/doctor.component.ts:192</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Previsualiza la imagen seleccionada para el doctor actual.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>El evento de cambio del input de archivo</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doctorActual"></a>
+                    <span class="name">
+                        <span ><b>doctorActual</b></span>
+                        <a href="#doctorActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>this.inicializarDoctor()</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/doctor/doctor.component.ts:20</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="doctores"></a>
+                    <span class="name">
+                        <span ><b>doctores</b></span>
+                        <a href="#doctores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/doctor/doctor.component.ts:19</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="instituciones"></a>
+                    <span class="name">
+                        <span ><b>instituciones</b></span>
+                        <a href="#instituciones"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[&quot;Institución A&quot;, &quot;Institución B&quot;, &quot;Institución C&quot;]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/components/doctor/doctor.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="usuarioActual"></a>
+                    <span class="name">
+                        <span ><b>usuarioActual</b></span>
+                        <a href="#usuarioActual"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/doctor/doctor.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Renderer2, Inject, PLATFORM_ID } from &#x27;@angular/core&#x27;;
+import { isPlatformBrowser } from &#x27;@angular/common&#x27;;
+import { CommonModule } from &#x27;@angular/common&#x27;;
+import { FormsModule } from &#x27;@angular/forms&#x27;;
+
+/**
+ * Componente que gestiona la información de los doctores.
+ */
+@Component({
+  selector: &#x27;app-doctor&#x27;,
+  standalone: true,
+  templateUrl: &#x27;./doctor.component.html&#x27;,
+  styleUrls: [&#x27;./doctor.component.css&#x27;],
+  imports: [CommonModule, FormsModule]
+})
+export class DoctorComponent implements OnInit {
+  instituciones &#x3D; [&quot;Institución A&quot;, &quot;Institución B&quot;, &quot;Institución C&quot;];
+  usuarioActual: any;
+  doctores: any[] &#x3D; [];
+  doctorActual: any &#x3D; this.inicializarDoctor();
+
+  /**
+   * Constructor del DoctorComponent
+   * @param platformId Identificador de la plataforma (navegador o servidor)
+   * @param renderer Servicio para manipular el DOM
+   */
+  constructor(@Inject(PLATFORM_ID) private platformId: any, private renderer: Renderer2) {}
+
+  /**
+   * Inicializa el componente cargando la información del usuario actual y los doctores.
+   */
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      const usuarioActualString &#x3D; sessionStorage.getItem(&#x27;usuarioActual&#x27;);
+      if (usuarioActualString) {
+        this.usuarioActual &#x3D; JSON.parse(usuarioActualString);
+      }
+      this.cargarDoctores();
+    }
+  }
+
+  /**
+   * Inicializa un nuevo doctor con campos vacíos.
+   * @returns Un objeto doctor inicializado
+   */
+  inicializarDoctor() {
+    return {
+      nombre: &#x27;&#x27;,
+      apellido: &#x27;&#x27;,
+      emails: [&#x27;&#x27;],
+      telefonos: [&#x27;&#x27;],
+      especialidad: &#x27;&#x27;,
+      instituciones: [&#x27;&#x27;],
+      notas: &#x27;&#x27;,
+      visitas: &#x27;&#x27;,
+      imagen: &#x27;&#x27;
+    };
+  }
+
+  /**
+   * Carga la lista de doctores desde el almacenamiento local.
+   */
+  cargarDoctores(): void {
+    this.doctores &#x3D; JSON.parse(localStorage.getItem(&#x27;doctores&#x27;) || &#x27;[]&#x27;);
+  }
+
+  /**
+   * Guarda el doctor actual en la lista de doctores y en el almacenamiento local.
+   * @param event El evento de envío del formulario
+   */
+  guardarDoctor(event: Event): void {
+    event.preventDefault();
+    if (this.doctorActual.nombre.length &lt; 3 || this.doctorActual.apellido.length &lt; 3 || this.doctorActual.especialidad.length &lt; 3) {
+      alert(&#x27;Por favor, llena todos los campos correctamente.&#x27;);
+      return;
+    }
+
+    if (this.doctorActual.index !&#x3D; null) {
+      this.doctores[this.doctorActual.index] &#x3D; this.doctorActual;
+    } else {
+      this.doctores.push(this.doctorActual);
+    }
+    localStorage.setItem(&#x27;doctores&#x27;, JSON.stringify(this.doctores));
+    this.doctorActual &#x3D; this.inicializarDoctor();
+
+    this.cargarDoctores();
+    this.cerrarModal();
+  }
+
+  /**
+   * Edita la información de un doctor existente.
+   * @param doctor El doctor a editar
+   */
+  editarDoctor(doctor: any): void {
+    this.doctorActual &#x3D; { ...doctor, index: this.doctores.indexOf(doctor) };
+    this.abrirModal();
+  }
+
+  /**
+   * Elimina un doctor de la lista y del almacenamiento local.
+   * @param doctor El doctor a eliminar
+   */
+  eliminarDoctor(doctor: any): void {
+    if (confirm(&#x27;¿Estás seguro de que quieres eliminar a este doctor?&#x27;)) {
+      this.doctores &#x3D; this.doctores.filter(d &#x3D;&gt; d !&#x3D;&#x3D; doctor);
+      localStorage.setItem(&#x27;doctores&#x27;, JSON.stringify(this.doctores));
+    }
+  }
+
+  /**
+   * Abre el modal para editar o agregar un doctor.
+   */
+  abrirModal(): void {
+    const modal &#x3D; document.getElementById(&#x27;doctorModal&#x27;);
+    if (modal) {
+      modal.classList.add(&#x27;show&#x27;);
+      modal.style.display &#x3D; &#x27;block&#x27;;
+      document.body.classList.add(&#x27;modal-open&#x27;);
+
+      const backdrop &#x3D; document.createElement(&#x27;div&#x27;);
+      backdrop.className &#x3D; &#x27;modal-backdrop fade show&#x27;;
+      document.body.appendChild(backdrop);
+    }
+  }
+
+  /**
+   * Cierra el modal de edición o agregado de doctor.
+   */
+  cerrarModal(): void {
+    const modal &#x3D; document.getElementById(&#x27;doctorModal&#x27;);
+    if (modal) {
+      modal.classList.remove(&#x27;show&#x27;);
+      modal.style.display &#x3D; &#x27;none&#x27;;
+      document.body.classList.remove(&#x27;modal-open&#x27;);
+
+      const backdrop &#x3D; document.querySelector(&#x27;.modal-backdrop&#x27;);
+      if (backdrop) {
+        document.body.removeChild(backdrop);
+      }
+    }
+  }
+
+  /**
+   * Agrega un nuevo campo de email al doctor actual.
+   */
+  agregarCampoEmail(): void {
+    this.doctorActual.emails.push(&#x27;&#x27;);
+  }
+
+  /**
+   * Elimina un campo de email del doctor actual.
+   * @param index El índice del campo de email a eliminar
+   */
+  eliminarCampoEmail(index: number): void {
+    this.doctorActual.emails.splice(index, 1);
+  }
+
+  /**
+   * Agrega un nuevo campo de teléfono al doctor actual.
+   */
+  agregarCampoTelefono(): void {
+    this.doctorActual.telefonos.push(&#x27;&#x27;);
+  }
+
+  /**
+   * Elimina un campo de teléfono del doctor actual.
+   * @param index El índice del campo de teléfono a eliminar
+   */
+  eliminarCampoTelefono(index: number): void {
+    this.doctorActual.telefonos.splice(index, 1);
+  }
+
+  /**
+   * Agrega un nuevo campo de institución al doctor actual.
+   */
+  agregarCampoInstitucion(): void {
+    this.doctorActual.instituciones.push(&#x27;&#x27;);
+  }
+
+  /**
+   * Elimina un campo de institución del doctor actual.
+   * @param index El índice del campo de institución a eliminar
+   */
+  eliminarCampoInstitucion(index: number): void {
+    this.doctorActual.instituciones.splice(index, 1);
+  }
+
+  /**
+   * Previsualiza la imagen seleccionada para el doctor actual.
+   * @param event El evento de cambio del input de archivo
+   */
+  previsualizarImagen(event: Event): void {
+    const input &#x3D; event.target as HTMLInputElement;
+    if (input.files &amp;&amp; input.files[0]) {
+      const reader &#x3D; new FileReader();
+      reader.onload &#x3D; (e) &#x3D;&gt; {
+        if (e.target &amp;&amp; e.target.result) {
+          this.doctorActual.imagen &#x3D; e.target.result as string;
+        }
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  /**
+   * Cierra el modal de edición o agregado de doctor (método alternativo).
+   */
+  closeModal(): void {
+    const modal &#x3D; document.getElementById(&#x27;doctorModal&#x27;);
+    if (modal) {
+      modal.classList.remove(&#x27;show&#x27;);
+      modal.style.display &#x3D; &#x27;none&#x27;;
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid mt-5&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;h2&gt;Lista de Doctores&lt;/h2&gt;
+            &lt;div class&#x3D;&quot;table-container&quot;&gt;
+                &lt;div class&#x3D;&quot;table-responsive&quot;&gt;
+                    &lt;table class&#x3D;&quot;table table-bordered&quot;&gt;
+                        &lt;thead&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;Nombre&lt;/th&gt;
+                                &lt;th&gt;Apellido&lt;/th&gt;
+                                &lt;th&gt;Emails&lt;/th&gt;
+                                &lt;th&gt;Teléfonos&lt;/th&gt;
+                                &lt;th&gt;Especialidad&lt;/th&gt;
+                                &lt;th&gt;Instituciones&lt;/th&gt;
+                                &lt;th&gt;Notas&lt;/th&gt;
+                                &lt;th&gt;Visitas&lt;/th&gt;
+                                &lt;th&gt;Acciones&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;/thead&gt;
+                        &lt;tbody&gt;
+                            &lt;tr *ngFor&#x3D;&quot;let doctor of doctores&quot;&gt;
+                                &lt;td&gt;{{ doctor.nombre }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.apellido }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.emails.join(&#x27;, &#x27;) }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.telefonos.join(&#x27;, &#x27;) }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.especialidad }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.instituciones.join(&#x27;, &#x27;) }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.notas }}&lt;/td&gt;
+                                &lt;td&gt;{{ doctor.visitas }}&lt;/td&gt;
+                                &lt;td&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-sm btn-warning&quot; (click)&#x3D;&quot;editarDoctor(doctor)&quot;&gt;Editar&lt;/button&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-sm btn-danger&quot; (click)&#x3D;&quot;eliminarDoctor(doctor)&quot;&gt;Eliminar&lt;/button&gt;
+                                &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/tbody&gt;
+                    &lt;/table&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Modal de Doctores --&gt;
+    &lt;div class&#x3D;&quot;modal fade&quot; id&#x3D;&quot;doctorModal&quot; tabindex&#x3D;&quot;-1&quot; aria-labelledby&#x3D;&quot;doctorModalLabel&quot; aria-hidden&#x3D;&quot;true&quot;&gt;
+        &lt;div class&#x3D;&quot;modal-dialog modal-lg&quot;&gt;
+            &lt;div class&#x3D;&quot;modal-content&quot;&gt;
+                &lt;div class&#x3D;&quot;modal-header&quot;&gt;
+                    &lt;h5 class&#x3D;&quot;modal-title&quot; id&#x3D;&quot;doctorModalLabel&quot;&gt;Ficha del Doctor&lt;/h5&gt;
+                    &lt;button type&#x3D;&quot;button&quot; class&#x3D;&quot;close ml-auto&quot; (click)&#x3D;&quot;cerrarModal()&quot; aria-label&#x3D;&quot;Close&quot;&gt;
+                        &lt;span aria-hidden&#x3D;&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;modal-body&quot;&gt;
+                    &lt;form id&#x3D;&quot;doctor-form&quot; (submit)&#x3D;&quot;guardarDoctor($event)&quot;&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-nombre&quot;&gt;Nombre&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;doctor-nombre&quot; [(ngModel)]&#x3D;&quot;doctorActual.nombre&quot; name&#x3D;&quot;doctor-nombre&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Nombre&quot;&gt;
+                            &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;El nombre es obligatorio y debe tener al menos 3 caracteres&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-apellido&quot;&gt;Apellido&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;doctor-apellido&quot; [(ngModel)]&#x3D;&quot;doctorActual.apellido&quot; name&#x3D;&quot;doctor-apellido&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Apellido&quot;&gt;
+                            &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;El apellido es obligatorio y debe tener al menos 3 caracteres&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div id&#x3D;&quot;emails-container&quot; class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-email&quot;&gt;Correo Electrónico&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;input-group mb-2&quot; *ngFor&#x3D;&quot;let email of doctorActual.emails; let i &#x3D; index&quot;&gt;
+                                &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;doctorActual.emails[i]&quot; name&#x3D;&quot;doctor-email-{{i}}&quot; placeholder&#x3D;&quot;Correo Electrónico&quot;&gt;
+                                &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;agregarCampoEmail()&quot;&gt;+&lt;/button&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;eliminarCampoEmail(i)&quot;&gt;-&lt;/button&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, ingresa un correo válido&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div id&#x3D;&quot;telefonos-container&quot; class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-telefono&quot;&gt;Teléfono&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;input-group mb-2&quot; *ngFor&#x3D;&quot;let telefono of doctorActual.telefonos; let i &#x3D; index&quot;&gt;
+                                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;doctorActual.telefonos[i]&quot; name&#x3D;&quot;doctor-telefono-{{i}}&quot; placeholder&#x3D;&quot;Teléfono&quot;&gt;
+                                &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;agregarCampoTelefono()&quot;&gt;+&lt;/button&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;eliminarCampoTelefono(i)&quot;&gt;-&lt;/button&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;El teléfono debe ser válido&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div id&#x3D;&quot;instituciones-container&quot; class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-institucion&quot;&gt;Institución&lt;/label&gt;
+                            &lt;div class&#x3D;&quot;input-group mb-2&quot; *ngFor&#x3D;&quot;let institucion of doctorActual.instituciones; let i &#x3D; index&quot;&gt;
+                                &lt;select class&#x3D;&quot;form-control&quot; [(ngModel)]&#x3D;&quot;doctorActual.instituciones[i]&quot; name&#x3D;&quot;doctor-institucion-{{i}}&quot;&gt;
+                                    &lt;option *ngFor&#x3D;&quot;let institucion of instituciones&quot; [value]&#x3D;&quot;institucion&quot;&gt;{{ institucion }}&lt;/option&gt;
+                                &lt;/select&gt;
+                                &lt;div class&#x3D;&quot;input-group-append&quot;&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;agregarCampoInstitucion()&quot;&gt;+&lt;/button&gt;
+                                    &lt;button class&#x3D;&quot;btn btn-outline-secondary&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;eliminarCampoInstitucion(i)&quot;&gt;-&lt;/button&gt;
+                                &lt;/div&gt;
+                                &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;Por favor, selecciona una institución&lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-especialidad&quot;&gt;Especialidad&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;doctor-especialidad&quot; [(ngModel)]&#x3D;&quot;doctorActual.especialidad&quot; name&#x3D;&quot;doctor-especialidad&quot; class&#x3D;&quot;form-control&quot; placeholder&#x3D;&quot;Especialidad&quot;&gt;
+                            &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;La especialidad es obligatoria&lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;form-group&quot;&gt;
+                            &lt;label for&#x3D;&quot;doctor-imagen&quot;&gt;Imagen del Doctor&lt;/label&gt;
+                            &lt;input type&#x3D;&quot;file&quot; id&#x3D;&quot;doctor-imagen&quot; (change)&#x3D;&quot;previsualizarImagen($event)&quot; class&#x3D;&quot;form-control-file&quot;&gt;
+                            &lt;img id&#x3D;&quot;doctor-imagen-previa&quot; [src]&#x3D;&quot;doctorActual.imagen || &#x27;img/predeterminada.jpg&#x27;&quot; class&#x3D;&quot;img-thumbnail mt-2&quot; alt&#x3D;&quot;Imagen del Doctor&quot; style&#x3D;&quot;width: 150px; height: 150px;&quot;&gt;
+                        &lt;/div&gt;
+                        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;Guardar Doctor&lt;/button&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./doctor.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/* Estilos generales */
+.container-fluid {
+    padding-top: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+
+/* Estilo para encabezados de tabla */
+.table thead th {
+    background-color: #44515f; /* Color primario */
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 2px solid #dee2e6;
+    padding: 10px;
+}
+
+.table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Estilo para el título del modal */
+.modal-title {
+    font-size: 1.5rem;
+    color: #007bff; /* Color primario */
+    flex-grow: 1;
+    text-align: center;
+}
+
+/* Estilo para el botón de guardar */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+/* Ajuste para el botón de cierre del modal */
+.modal-header .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    z-index: 1;
+}
+
+.modal-header h5 {
+    flex: 1;
+    text-align: center;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .table-responsive {
+        border: 0;
+    }
+
+    .table-responsive .table {
+        margin-bottom: 0;
+    }
+
+    .table-responsive .table-bordered {
+        border: 0;
+    }
+
+    .table-responsive .table-bordered th,
+    .table-responsive .table-bordered td {
+        border: 0;
+        border-bottom: 1px solid #dee2e6;
+    }
+
+    .modal-content {
+        padding: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .modal-header {
+        padding-bottom: 5px;
+    }
+
+    .modal-header .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        z-index: 1;
+    }
+    
+    .modal-header h5 {
+        margin-right: 10px; /* Ajusta este valor si es necesario para evitar que el texto se superponga con el botón de cierre */
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid mt-5">    <div class="row">        <div class="col-12">            <h2>Lista de Doctores</h2>            <div class="table-container">                <div class="table-responsive">                    <table class="table table-bordered">                        <thead>                            <tr>                                <th>Nombre</th>                                <th>Apellido</th>                                <th>Emails</th>                                <th>Teléfonos</th>                                <th>Especialidad</th>                                <th>Instituciones</th>                                <th>Notas</th>                                <th>Visitas</th>                                <th>Acciones</th>                            </tr>                        </thead>                        <tbody>                            <tr *ngFor="let doctor of doctores">                                <td>{{ doctor.nombre }}</td>                                <td>{{ doctor.apellido }}</td>                                <td>{{ doctor.emails.join(\', \') }}</td>                                <td>{{ doctor.telefonos.join(\', \') }}</td>                                <td>{{ doctor.especialidad }}</td>                                <td>{{ doctor.instituciones.join(\', \') }}</td>                                <td>{{ doctor.notas }}</td>                                <td>{{ doctor.visitas }}</td>                                <td>                                    <button class="btn btn-sm btn-warning" (click)="editarDoctor(doctor)">Editar</button>                                    <button class="btn btn-sm btn-danger" (click)="eliminarDoctor(doctor)">Eliminar</button>                                </td>                            </tr>                        </tbody>                    </table>                </div>            </div>        </div>    </div>    <!-- Modal de Doctores -->    <div class="modal fade" id="doctorModal" tabindex="-1" aria-labelledby="doctorModalLabel" aria-hidden="true">        <div class="modal-dialog modal-lg">            <div class="modal-content">                <div class="modal-header">                    <h5 class="modal-title" id="doctorModalLabel">Ficha del Doctor</h5>                    <button type="button" class="close ml-auto" (click)="cerrarModal()" aria-label="Close">                        <span aria-hidden="true">&times;</span>                    </button>                </div>                <div class="modal-body">                    <form id="doctor-form" (submit)="guardarDoctor($event)">                        <div class="form-group">                            <label for="doctor-nombre">Nombre</label>                            <input type="text" id="doctor-nombre" [(ngModel)]="doctorActual.nombre" name="doctor-nombre" class="form-control" placeholder="Nombre">                            <div class="invalid-feedback">El nombre es obligatorio y debe tener al menos 3 caracteres</div>                        </div>                        <div class="form-group">                            <label for="doctor-apellido">Apellido</label>                            <input type="text" id="doctor-apellido" [(ngModel)]="doctorActual.apellido" name="doctor-apellido" class="form-control" placeholder="Apellido">                            <div class="invalid-feedback">El apellido es obligatorio y debe tener al menos 3 caracteres</div>                        </div>                        <div id="emails-container" class="form-group">                            <label for="doctor-email">Correo Electrónico</label>                            <div class="input-group mb-2" *ngFor="let email of doctorActual.emails; let i = index">                                <input type="email" class="form-control" [(ngModel)]="doctorActual.emails[i]" name="doctor-email-{{i}}" placeholder="Correo Electrónico">                                <div class="input-group-append">                                    <button class="btn btn-outline-secondary" type="button" (click)="agregarCampoEmail()">+</button>                                    <button class="btn btn-outline-secondary" type="button" (click)="eliminarCampoEmail(i)">-</button>                                </div>                                <div class="invalid-feedback">Por favor, ingresa un correo válido</div>                            </div>                        </div>                        <div id="telefonos-container" class="form-group">                            <label for="doctor-telefono">Teléfono</label>                            <div class="input-group mb-2" *ngFor="let telefono of doctorActual.telefonos; let i = index">                                <input type="text" class="form-control" [(ngModel)]="doctorActual.telefonos[i]" name="doctor-telefono-{{i}}" placeholder="Teléfono">                                <div class="input-group-append">                                    <button class="btn btn-outline-secondary" type="button" (click)="agregarCampoTelefono()">+</button>                                    <button class="btn btn-outline-secondary" type="button" (click)="eliminarCampoTelefono(i)">-</button>                                </div>                                <div class="invalid-feedback">El teléfono debe ser válido</div>                            </div>                        </div>                        <div id="instituciones-container" class="form-group">                            <label for="doctor-institucion">Institución</label>                            <div class="input-group mb-2" *ngFor="let institucion of doctorActual.instituciones; let i = index">                                <select class="form-control" [(ngModel)]="doctorActual.instituciones[i]" name="doctor-institucion-{{i}}">                                    <option *ngFor="let institucion of instituciones" [value]="institucion">{{ institucion }}</option>                                </select>                                <div class="input-group-append">                                    <button class="btn btn-outline-secondary" type="button" (click)="agregarCampoInstitucion()">+</button>                                    <button class="btn btn-outline-secondary" type="button" (click)="eliminarCampoInstitucion(i)">-</button>                                </div>                                <div class="invalid-feedback">Por favor, selecciona una institución</div>                            </div>                        </div>                        <div class="form-group">                            <label for="doctor-especialidad">Especialidad</label>                            <input type="text" id="doctor-especialidad" [(ngModel)]="doctorActual.especialidad" name="doctor-especialidad" class="form-control" placeholder="Especialidad">                            <div class="invalid-feedback">La especialidad es obligatoria</div>                        </div>                        <div class="form-group">                            <label for="doctor-imagen">Imagen del Doctor</label>                            <input type="file" id="doctor-imagen" (change)="previsualizarImagen($event)" class="form-control-file">                            <img id="doctor-imagen-previa" [src]="doctorActual.imagen || \'img/predeterminada.jpg\'" class="img-thumbnail mt-2" alt="Imagen del Doctor" style="width: 150px; height: 150px;">                        </div>                        <button type="submit" class="btn btn-primary">Guardar Doctor</button>                    </form>                </div>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DoctorComponent', 'selector': 'app-doctor'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'RegisterComponent', 'selector': 'app-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DoctorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DoctorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
