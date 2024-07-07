@@ -1,0 +1,19 @@
+[
+    {
+      "nombre": "Institución A",
+      "direccion": "Calle Falsa 123",
+      "telefono": "123456789",
+      "email": "contacto@instituciona.com",
+      "region": "Región Metropolitana",
+      "comuna": "Santiago"
+    },
+    {
+      "nombre": "Institución B",
+      "direccion": "Avenida Siempre Viva 742",
+      "telefono": "987654321",
+      "email": "contacto@institucionb.com",
+      "region": "Valparaíso",
+      "comuna": "Valparaíso"
+    }
+  ]
+  

@@ -1,0 +1,112 @@
+
+src/
+app/
+  components/
+    dashboard/
+      dashboard.component.css
+      dashboard.component.html
+      dashboard.component.spec.ts
+      dashboard.component.ts
+    login/
+      login.component.css
+      login.component.html
+      login.component.spec.ts
+      login.component.ts
+    register/
+      register.component.css
+      register.component.html
+      register.component.spec.ts
+      register.component.ts
+  app.component.css (vacío)
+  app.component.html (<router-outlet></router-outlet>)
+  app.component.spec.ts (  import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { AppComponent } from './app.component';
+
+// Descripción del grupo de pruebas para AppComponent
+describe('AppComponent', () => {
+  // Configuración del módulo de prueba
+  beforeEach(async () => {
+    // Configura el TestBed con los módulos necesarios y el componente a probar
+    await TestBed.configureTestingModule({
+      imports: [RouterTestingModule, AppComponent]  // Importa RouterTestingModule y AppComponent
+    }).compileComponents(); // Compila los componentes
+  });
+
+  // Prueba para verificar que el componente se crea correctamente
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent); // Crea una instancia del componente y del fixture
+    const app = fixture.componentInstance; // Obtiene la instancia del componente
+    expect(app).toBeTruthy(); // Verifica que el componente se crea correctamente
+  });
+
+  // Prueba para verificar que la propiedad 'title' del componente tiene el valor esperado
+  it(`should have as title 'mimedisan'`, () => {
+    const fixture = TestBed.createComponent(AppComponent); // Crea una instancia del componente y del fixture
+    const app = fixture.componentInstance; // Obtiene la instancia del componente
+    expect(app.title).toEqual('mimedisan'); // Verifica que la propiedad 'title' del componente es 'mimedisan'
+  });
+
+  // Prueba para verificar que el componente renderiza el navbar
+  it('should render the navbar', () => {
+    const fixture = TestBed.createComponent(AppComponent); // Crea una instancia del componente y del fixture
+    fixture.detectChanges(); // Detecta cambios para actualizar la vista
+    const compiled = fixture.nativeElement as HTMLElement; // Obtiene el elemento nativo del DOM
+    expect(compiled.querySelector('app-navbar')).not.toBeNull(); // Verifica que el navbar se renderiza en la vista
+  });
+});
+  )
+  app.component.ts ( import { Component } from '@angular/core';
+                      import { Router, NavigationEnd, Event } from '@angular/router';
+                      import { filter } from 'rxjs/operators';
+                      import { CommonModule } from '@angular/common';
+                      import { NavbarComponent } from './components/navbar/navbar.component';
+                      import { RouterOutlet } from '@angular/router';
+
+                  @Component({
+                    selector: 'app-root',
+                    standalone: true,
+                    imports: [RouterOutlet, NavbarComponent, CommonModule],
+                    templateUrl: './app.component.html',
+                    styleUrls: ['./app.component.css']
+                  })
+                  export class AppComponent {
+                    title = 'mimedisan';
+                    showNavbar = true;
+
+                    constructor(private router: Router) {
+                      this.router.events.pipe(
+                        filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd)
+                      ).subscribe((event: NavigationEnd) => {
+                        this.showNavbar = !(event.url === '/register' || event.url === '/login');
+                      });
+                    }
+                  }
+
+                    )
+  app.config.ts (
+                  import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+                  import { provideRouter, RouterModule } from '@angular/router';
+                  import { importProvidersFrom } from '@angular/core';
+                  import { CommonModule } from '@angular/common';
+
+                  import { routes } from './app.routes';
+
+                  export const appConfig: ApplicationConfig = {
+                    providers: [
+                      provideZoneChangeDetection({ eventCoalescing: true }),
+                      provideRouter(routes),
+                      importProvidersFrom(CommonModule, RouterModule)  // Importa RouterModule para usar routerLink
+                    ]
+                  };
+
+  )
+  app.routes.ts
+index.html
+main.ts
+angular.json
+package-lock.json
+package.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
