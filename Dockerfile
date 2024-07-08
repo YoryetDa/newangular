@@ -23,7 +23,7 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine
 
 # Copia los archivos compilados desde la imagen anterior
-COPY --from=build /app/dist/mimedisan /usr/share/nginx/html
+COPY --from=build /app/dist/mimedisan/browser /usr/share/nginx/html
 
 # Expon el puerto 80 para el contenedor
 EXPOSE 80
