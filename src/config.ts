@@ -6,6 +6,6 @@ export const config = {
   tokens: {
     usuarios: 'a276bef9-661d-4359-b63e-4a0992caa293',
     instituciones: 'ef4193e8-47e4-4e89-852a-2d9806604fe6',
-    doctores: 'e96b2f79-5981-4816-afd7-732b15c57b47'
+    doctores: '192abd5f-529f-410e-bb1c-833e313de63c'
   }
 };
