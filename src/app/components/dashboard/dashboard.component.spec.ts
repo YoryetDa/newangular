@@ -2,69 +2,115 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { JsonService } from '../../services/json.service';
+import { of } from 'rxjs';
+
+class MockJsonService {
+  usuarios = [
+    { nombre: 'Juan', apellido: 'Perez', correo: 'juan.perez@example.com', contrasena: 'Password123!', rol: 'admin' },
+    { nombre: 'Ana', apellido: 'Gomez', correo: 'ana.gomez@example.com', contrasena: 'AnaGomez456$', rol: 'user' }
+  ];
+
+  doctores = [
+    { id: '1', nombre: 'Doctor 1', especialidad: 'Cardiología' },
+    { id: '2', nombre: 'Doctor 2', especialidad: 'Dermatología' }
+  ];
+
+  instituciones = [
+    { nombre: 'Institución A' },
+    { nombre: 'Institución B' },
+    { nombre: 'Institución C' }
+  ];
+
+  getUsuarios() {
+    return of(this.usuarios);
+  }
+
+  getDoctores() {
+    return of(this.doctores);
+  }
+
+  getInstituciones() {
+    return of(this.instituciones);
+  }
+
+  updateUsuarios(data: any) {
+    this.usuarios = data;
+    return of(null);
+  }
+
+  updateDoctores(data: any) {
+    this.doctores = data;
+    return of(null);
+  }
+
+  deleteDoctor(id: string) {
+    this.doctores = this.doctores.filter(doctor => doctor.id !== id);
+    return of(null);
+  }
+
+  generateId(): string {
+    return '_' + Math.random().toString(36).substr(2, 9);
+  }
+}
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
+  let jsonService: MockJsonService;
 
-  // Configuración del módulo de prueba
   beforeEach(async () => {
-    // Configura el TestBed con los módulos necesarios y el componente a probar
     await TestBed.configureTestingModule({
-      imports: [FormsModule, RouterTestingModule, DashboardComponent]
+      imports: [FormsModule, RouterTestingModule, HttpClientModule, DashboardComponent],
+      providers: [{ provide: JsonService, useClass: MockJsonService }]
     }).compileComponents();
   });
 
-  // Inicialización del componente y del fixture antes de cada prueba
   beforeEach(() => {
-    // Crea una instancia del componente y del fixture
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges(); // Detecta cambios para inicializar la vista
+    jsonService = TestBed.inject(JsonService) as unknown as MockJsonService;
+    fixture.detectChanges();
   });
 
-  // Prueba para verificar que el componente se crea correctamente
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  // Prueba para verificar que el usuario actual se carga correctamente desde sessionStorage
-  it('should load the current user from sessionStorage', () => {
-    const mockUser = { nombre: 'John', apellido: 'Doe', rol: 'admin' };
-    sessionStorage.setItem('usuarioActual', JSON.stringify(mockUser)); // Simula un usuario en sessionStorage
-
-    component.ngOnInit(); // Llama al método ngOnInit para cargar el usuario
-
-    expect(component.usuarioActual).toEqual(mockUser); // Verifica que el usuario actual es el esperado
+  it('should load users from JsonService', () => {
+    component.ngOnInit();
+    expect(component.usuarios).toEqual(jsonService.usuarios);
   });
 
-  // Prueba para verificar que un usuario se agrega correctamente
   it('should add a user correctly', () => {
-    const initialLength = component.usuarios.length; // Guarda la longitud inicial de la lista de usuarios
+    const initialLength = component.usuarios.length;
     const newUser = { nombre: 'Jane', apellido: 'Doe', correo: 'jane.doe@example.com', rol: 'user' };
 
-    component.usuarioActualEdicion = newUser; // Establece el nuevo usuario como el usuario en edición
-    component.guardarUsuario(new Event('submit')); // Llama al método para guardar el usuario
+    component.usuarioActualEdicion = newUser;
+    component.guardarUsuario(new Event('submit'));
 
-    expect(component.usuarios.length).toBe(initialLength + 1); // Verifica que la longitud de la lista de usuarios aumentó en uno
-    expect(component.usuarios[component.usuarios.length - 1]).toEqual(newUser); // Verifica que el último usuario en la lista es el nuevo usuario
+    expect(component.usuarios.length).toBe(initialLength + 1);
+    expect(component.usuarios[component.usuarios.length - 1]).toEqual(newUser);
   });
 
-  // Prueba para verificar que un usuario se elimina correctamente
   it('should delete a user correctly', () => {
-    // Configura una lista inicial de usuarios
-    component.usuarios = [
-      { nombre: 'Juan', apellido: 'Perez', correo: 'juan.perez@example.com', contrasena: 'Password123!', rol: 'admin' },
-      { nombre: 'Ana', apellido: 'Gomez', correo: 'ana.gomez@example.com', contrasena: 'AnaGomez456$', rol: 'user' },
-      { nombre: 'Jane', apellido: 'Doe', correo: 'jane.doe@example.com', rol: 'user' }
-    ];
+    const initialLength = component.usuarios.length;
+    const userToDelete = jsonService.usuarios[0];
 
-    const userToDelete = { nombre: 'Jane', apellido: 'Doe', correo: 'jane.doe@example.com', rol: 'user' };
-    const initialLength = component.usuarios.length; // Guarda la longitud inicial de la lista de usuarios
+    component.eliminarUsuario(userToDelete);
 
-    component.eliminarUsuario(userToDelete); // Llama al método para eliminar el usuario
+    expect(component.usuarios.length).toBe(initialLength - 1);
+    expect(component.usuarios.some(u => u.correo === userToDelete.correo)).toBeFalse();
+  });
 
-    expect(component.usuarios.length).toBe(initialLength - 1); // Verifica que la longitud de la lista de usuarios disminuyó en uno
-    expect(component.usuarios.some(u => u.correo === userToDelete.correo)).toBeFalse(); // Verifica que el usuario eliminado ya no está en la lista
+  it('should load doctors from JsonService', () => {
+    component.ngOnInit();
+    expect(component.doctores).toEqual(jsonService.doctores);
+  });
+
+  it('should load institutions from JsonService', () => {
+    component.ngOnInit();
+    expect(component.instituciones).toEqual(jsonService.instituciones);
   });
 });

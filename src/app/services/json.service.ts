@@ -102,7 +102,10 @@ export class JsonService {
       catchError(this.handleError) // Maneja errores utilizando el método handleError
     );
   }
-
+ // Método para generar IDs únicos
+ generateId(): string {
+  return '_' + Math.random().toString(36).substr(2, 9);
+}
   // Método para manejar errores en las solicitudes HTTP
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

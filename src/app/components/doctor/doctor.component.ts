@@ -48,6 +48,8 @@ export class DoctorComponent implements OnInit {
    */
   inicializarDoctor() {
     return {
+      id: '', // Añadir ID aquí
+
       nombre: '',
       apellido: '',
       emails: [''],
@@ -79,7 +81,9 @@ export class DoctorComponent implements OnInit {
       //alert('Por favor, llena todos los campos correctamente.');
       return;
     }
-
+    if (!this.doctorActual.id) {
+      this.doctorActual.id = this.jsonService.generateId(); // Generar ID único si no existe
+    }
     if (this.doctorActual.index != null) {
       this.doctores[this.doctorActual.index] = this.doctorActual;
     } else {
@@ -100,7 +104,6 @@ export class DoctorComponent implements OnInit {
     this.doctorActual = { ...doctor, index: this.doctores.indexOf(doctor) };
     this.abrirModal();
   }
-
   /**
    * Elimina un doctor de la lista y de Firebase.
    * @param doctor El doctor a eliminar
@@ -116,6 +119,7 @@ export class DoctorComponent implements OnInit {
   /**
    * Abre el modal para editar o agregar un doctor.
    */
+ 
   abrirModal(): void {
     const modal = document.getElementById('doctorModal');
     if (modal) {
@@ -145,7 +149,6 @@ export class DoctorComponent implements OnInit {
       }
     }
   }
-
   /**
    * Agrega un nuevo campo de email al doctor actual.
    */
