@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+import { config } from '../../config';  // Asegúrate de usar la ruta correcta
 
 // Decorador Injectable que marca esta clase como un servicio que puede ser inyectado en otros componentes o servicios
 @Injectable({
@@ -9,21 +10,19 @@ import { catchError, switchMap } from 'rxjs/operators';
 })
 export class JsonService {
   // Base URL para acceder a los archivos JSON almacenados en Firebase Storage
-  private baseUrl = '/api/v0/b/ficheroangular.appspot.com/o/';
+  private baseUrl = config.apiUrl;
   // Tokens de acceso necesarios para acceder a los archivos JSON específicos
-  private tokens = {
-    usuarios: 'a276bef9-661d-4359-b63e-4a0992caa293',
-    instituciones: 'ef4193e8-47e4-4e89-852a-2d9806604fe6',
-    doctores: '7206bb09-8384-407b-93b2-c80f6afc6e08'
-  };
+  private tokens = config.tokens;
 
   // Constructor que inyecta HttpClient para realizar solicitudes HTTP
   constructor(private http: HttpClient) { }
 
   // Método para obtener los usuarios desde el archivo JSON en Firebase Storage
   getUsuarios(): Observable<any> {
-    return this.http.get(`${this.baseUrl}usuarios.json?alt=media&token=${this.tokens.usuarios}`)
-      .pipe(catchError(this.handleError)); // Maneja errores utilizando el método handleError
+    const url = `${this.baseUrl}usuarios.json?alt=media&token=${this.tokens.usuarios}`;
+    console.log('URL solicitada:', url); // Agrega esta línea para imprimir la URL
+    return this.http.get(url)
+      .pipe(catchError(this.handleError));
   }
 
   // Método para obtener las instituciones desde el archivo JSON en Firebase Storage

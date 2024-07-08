@@ -17,13 +17,13 @@ RUN npm install
 COPY . .
 
 # Compila la aplicación Angular
-RUN npm run build --production
+RUN npm run build -- --configuration production --project mimedisan
 
 # Usa una imagen base de Nginx para servir la aplicación Angular
 FROM nginx:alpine
 
 # Copia los archivos compilados desde la imagen anterior
-COPY --from=build /app/dist/mimedisan/browser /usr/share/nginx/html
+COPY --from=build /app/dist/mimedisan/browser/ /usr/share/nginx/html
 
 # Copia la configuración de nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
