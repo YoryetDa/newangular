@@ -112,7 +112,7 @@ export class DashboardComponent implements OnInit {
     guardarDoctor(event: Event): void {
       event.preventDefault();
       if (this.doctorActual.nombre.length < 3 || this.doctorActual.apellido.length < 3 || this.doctorActual.especialidad.length < 3) {
-        alert('Por favor, llena todos los campos correctamente.');
+        //alert('Por favor, llena todos los campos correctamente.');
         return;
       }
   
