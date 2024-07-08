@@ -67,10 +67,12 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "mimedisan:build:production"
+              "buildTarget": "mimedisan:build:production",
+              "proxyConfig": "proxy.conf.json"
             },
             "development": {
-              "buildTarget": "mimedisan:build:development"
+              "buildTarget": "mimedisan:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

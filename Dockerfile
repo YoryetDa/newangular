@@ -1,5 +1,5 @@
-# Usa una imagen base de Node.js 18 para construir la aplicación Angular
-FROM node:18 AS build
+# Usa una imagen base de Node.js 20 para construir la aplicación Angular
+FROM node:20 AS build
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /app
@@ -17,13 +17,16 @@ RUN npm install
 COPY . .
 
 # Compila la aplicación Angular
-RUN npm run build -- --configuration production
+RUN npm run build --production
 
 # Usa una imagen base de Nginx para servir la aplicación Angular
 FROM nginx:alpine
 
 # Copia los archivos compilados desde la imagen anterior
 COPY --from=build /app/dist/mimedisan/browser /usr/share/nginx/html
+
+# Copia la configuración de nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Expon el puerto 80 para el contenedor
 EXPOSE 80

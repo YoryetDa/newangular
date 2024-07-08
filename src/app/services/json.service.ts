@@ -10,7 +10,6 @@ import { catchError, switchMap } from 'rxjs/operators';
 export class JsonService {
   // Base URL para acceder a los archivos JSON almacenados en Firebase Storage
   private baseUrl = '/api/v0/b/ficheroangular.appspot.com/o/';
-
   // Tokens de acceso necesarios para acceder a los archivos JSON específicos
   private tokens = {
     usuarios: 'a276bef9-661d-4359-b63e-4a0992caa293',
