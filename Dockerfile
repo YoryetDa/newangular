@@ -19,14 +19,14 @@ COPY . .
 # Compila la aplicación Angular
 RUN npm run build -- --configuration production
 
-# Usa una imagen base de Apache para servir la aplicación Angular
-FROM httpd:2.4
+# Usa una imagen base de Nginx para servir la aplicación Angular
+FROM nginx:alpine
 
 # Copia los archivos compilados desde la imagen anterior
-COPY --from=build /app/dist/mimedisan /usr/local/apache2/htdocs/
+COPY --from=build /app/dist/mimedisan /usr/share/nginx/html
 
 # Expon el puerto 80 para el contenedor
 EXPOSE 80
 
-# Comando para ejecutar Apache
-CMD ["httpd-foreground"]
+# Comando para ejecutar Nginx
+CMD ["nginx", "-g", "daemon off;"]
